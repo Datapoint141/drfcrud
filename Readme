@@ -1,0 +1,2 @@
+This is an REST Api, designed with django framework. 
+Authentication used is JWT
