@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+
+{%block contents%}
+
+<div class="container p-3 my-3 bg-dark text-white">
+  <h1>Get Authentication Token JWT</h1>
+  <p>Getting Authentication Token For Product Catalog, if you dont have authentication token then it failed</p>
+  <form action="{%url 'GetAuthenticationToken'%}" method="post">
+      {%csrf_token%}
+  <div class="form-group">
+    <label for="user">Username:</label>
+    <input type="user" class="form-control" name="username" placeholder="Enter User name" id="user">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" name="password" placeholder="Enter password" id="pwd">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+<div class="container p-3 my-3 bg-primary text-white">
+  <h1>My First Bootstrap Page</h1>
+  <p>This container has a blue background color and a white text, and some extra padding and margins.</p>
+</div>
+{%endblock%}

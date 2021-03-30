@@ -1,0 +1,64 @@
+{%extends 'adminbase.html'%}
+
+{%block contents%}
+
+<div class="container p-3 my-3 bg-dark text-white">
+  <h1>Get Authentication Token JWT</h1>
+  <p>Getting Authentication Token For Product Catalog, if you dont have authentication token then it failed</p>
+
+<span class="label label-danger">{{token}}</span>
+         <label></label>
+
+
+</div>
+
+<div class="container p-3 my-3 bg-primary text-white">
+  <h1>Products Catalog</h1>
+
+    {% for x in resp%}
+    <div class="section">
+
+        <table class="table table-condensed">
+             <tr>
+                 <td> <h4><a href="#" class="section_toggle"></a>  {{ x.id }}:</h4></td>
+                <td>{{x.productName}}</td><td>{{x.price}}</td><td>{{x.productVendor}}</td><td>{{x.addeddate}}</td><td><a href="{%url 'AddReviewsByProduct'%}?pid={{x.productName}}&pk={{ x.id }}" class="text-white">Reviews</a> </td>
+            </tr>
+            <table class="table-sm table-condensed" border="2px">
+                <tr>
+                    <th>ID</th><th>User Name</th><th>Reviews</th><th>Rating</th><th>Date</th>
+                </tr>
+
+                </tr>
+                <h2>Reviews of Product {{ x.id }}</h2>
+                 {% for value in x.product_info_reviews %}
+                    <tr>
+                        <td>{{value.id}}</td><td>{{value.userid}}</td><td>{{value.reviews}}</td><td>{{value.rating}}</td><td>{{value.reviewsDate}}</td>
+                    </tr>
+                    {% endfor %}
+            </table>
+ <table border="2px" class="table-sm table-condensed">
+                <tr>
+                    <th>ID</th><th>User Name</th><th>Reviews</th><th>Rating</th>
+                </tr>
+
+                </tr>
+                <h2>Selling Info of Product {{ x.id }}</h2>
+                 {% for value in x.product_info_sale %}
+                    <tr>
+                        <td>{{value.id}}</td><td>{{value.ecommercesite}}</td><td>{{value.sellername}}</td><td>{{value.sellingstartfrom}}</td></td>
+                    </tr>
+                    {% endfor %}
+            </table>
+
+
+
+        </table>
+
+
+    </div>
+
+{% endfor %}
+    <span>Signture Status is <font class="text-danger">{{msg}}</font></span>
+  <p>This container has a blue background color and a white text, and some extra padding and margins.</p>
+</div>
+{%endblock%}

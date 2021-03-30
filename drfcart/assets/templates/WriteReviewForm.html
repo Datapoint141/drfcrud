@@ -1,0 +1,46 @@
+{%extends 'adminbase.html'%}
+
+{%block contents%}
+
+<div class="container p-3 my-3 bg-dark text-white">
+  <h1>Get Authentication Token JWT</h1>
+  <p>Getting Authentication Token For Product Catalog, if you dont have authentication token then it failed</p>
+
+<span class="label label-danger">{{token}}</span>
+         <label></label>
+
+
+</div>
+
+<div class="container p-3 my-3 bg-primary text-white">
+  <h1>Writing Product Reviews</h1>
+
+     <form method="POST" action="{%url 'AddingProductReviews'%}" class="bg-light text-dark">
+                {% csrf_token %}
+                <table>
+                    <tr><td>Product Name</td><td><input type="text" name="productName" value="{{productname}}" readonly></td></tr>
+                    <tr><td></td><td><input type="hidden" name="p_pk" value="{{p_pk}}" readonly></td></tr>
+                    <tr><td>User Name </td><td><input type="text" name="username"></td></tr>
+                    <tr><td>Write Review</td><td><textarea name="reviews" rows="4" cols="23"></textarea></td></tr>
+                    <tr><td>Date Date</td><td><input type="date" name="reviewdate"></td></tr>
+                    <tr><td>Rating</td><td><input type="number" min="0" max="5" name="rating"></td></tr>
+                    <tr><td><button  class="btn btn-outline-success my-2 my-sm-0" type="submit" style = "margin-left:20%;">Add</button></td></tr>
+
+                        {% if messages %}
+                               {% for message in messages %}
+                                  <font color='GREEN'> {{ message }}</font>
+                               {% endfor %}
+                           {% endif %}
+
+                </table>
+
+    <div class="section">
+
+
+    </div>
+
+
+    <span>Signture Status is <font class="text-danger">{{msg}}</font></span>
+  <p>This container has a blue background color and a white text, and some extra padding and margins.</p>
+</div>
+{%endblock%}
